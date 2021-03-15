@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: normal 15pt Arial;
+            background-color: rgb(102, 102, 245);
+        }
+        header h1{
+            color: white;
+            text-align: center;
+            margin: 25px;
+        }
+        section{
+            padding: 15px;
+            color: black;
+            width: 500px;
+            border-radius: 10px;
+            background-color: white;
+            margin: auto;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.349);            
+        }
+        
+        footer{
+            color: white;
+            text-align: center;
+            padding-top: 6%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+
+    <section>
+        <div>
+            <p>Ano de Nascimento: <input type="number" name="idade" id="txtano"></p>
+            <p>Sexo: 
+                <input type="radio" name="radsex" id="mas" checked>
+                <label for="mas">Masculino</label>
+                <input type="radio" name="radsex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+            <p>
+                <input type="button" value="Verificar" onclick="verificar()">
+            </p>
+        </div>
+        <div id="res">
+            <p>Preencha os dados acima para ver o resultado!</p>
+        </div>
+</section>
+
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+
+
+
+
+<script>
+    function verificar(){
+        let data = new Date()
+        let ano = data.getFullYear()
+        let fano = document.getElementById('txtano')
+        let res = document.getElementById('res')
+        let img = document.createElement('img')
+        img.setAttribute('id', 'foto')
+
+            if (fano.value.length == 0 || Number(fano.value) > ano) {
+                window.alert('ERRO! Verifique os datos novamente.')
+            } else {
+                let fsex = document.getElementsByName('radsex')
+                let idade = ano - Number(fano.value)
+                let genero = ''
+                    if (fsex[0].checked){
+                        genero = 'um Homem'
+                        if (idade >= 0 &&  idade < 10){
+                            //criança
+                            img.setAttribute('src', 'criancam.jpeg')
+                        } else if (idade < 21) {
+                            //jovem
+                            img.setAttribute('src', 'jovemm.jpeg')
+                        }else if (idade < 50) {
+                            //adulto
+                            img.setAttribute('src', 'adultom.jpeg')
+                        } else {
+                            //idoso
+                            img.setAttribute('src', 'idosom.jpeg')
+                        }
+                    } else if (fsex[1].checked){
+                        genero = 'uma Mulher'
+                        if (idade >= 0 &&  idade < 10){
+                            //criança
+                            img.setAttribute('src', 'criancaf.jpeg')
+                        } else if (idade < 21) {
+                            //jovem
+                            img.setAttribute('src', 'jovemf.jpeg')
+                        }else if (idade < 50) {
+                            //adulto
+                            img.setAttribute('src', 'adultof.jpeg')
+                        } else {
+                            //idoso
+                            img.setAttribute('src', 'idosof.jpeg')
+                        }
+
+                    }
+                    res.style.textAlign = 'center'
+                    res.innerHTML = `Você é ${genero}, e tem ${idade} anos.`
+                    res.appendChild(img)
+            }
+    }
+
+
+</script>
+
+
+</body>
+</html>

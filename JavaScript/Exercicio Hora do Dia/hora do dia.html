@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: normal 15pt Arial;
+            background-color: rgb(102, 102, 245);
+        }
+        header h1{
+            color: white;
+            text-align: center;
+            margin: 25px;
+            margin-top: 200px;
+        }
+        section{
+            padding: 15px;
+            color: black;
+            width: 500px;
+            border-radius: 10px;
+            background-color: white;
+            margin: auto;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.349);            
+        }
+        div.txt{
+            text-align: center;
+        }
+        section div.img{
+            padding: 20px;
+            position: relative;
+            max-width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin-left: 50%;
+            transform: translate(-50%);
+        }
+        section div.img img{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        footer{
+            color: white;
+            text-align: center;
+            padding-top: 6%;
+
+        }
+    </style>
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+
+    <section>
+        <div class="txt" id="msg">
+            Aqui vai aparecer a mensagem...
+        </div>
+        <div class="img" id="foto">
+            <img id="imagem" src="manha.jpg" alt="Imagem do dia.">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+
+
+
+
+<script>
+    
+
+    function carregar(){
+        let msg = document.getElementById('msg')
+        let img = document.getElementById('imagem')
+        let agora = new Date
+        let hora = agora.getHours()
+
+            if (hora >= 5 && hora < 12){
+                msg.innerHTML = `Agoa são ${hora} horas. Tenha um bom dia!`
+                img.src = 'manha.jpg'
+                document.body.style.background = '#f5e28e'            
+            }else if(hora >= 12 && hora <= 18){
+                msg.innerHTML = `Agoa são ${hora} horas. Tenha uma boa tarde!`
+                img.src = 'tarde.jpeg'
+                document.body.style.background = '#f7a043'
+            }else{
+                msg.innerHTML = `Agoa são ${hora} horas. Tenha uma boa noite!`
+                img.src = 'noite.jpeg'
+                document.body.style.background = '#55048f' 
+            }
+            }
+
+
+</script>
+
+
+</body>
+</html>
