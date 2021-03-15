@@ -1,0 +1,64 @@
+*{
+ margin:0;
+ padding:0;
+ box-sizing: border-box;
+}
+
+html,body{
+	height: 100%;
+}
+
+.box{
+	border:1px solid black;
+	width: 33.3%;
+	height: 300px;
+	background-color: green;
+	float: left;
+}
+
+/*
+@media screen and (min-height: 320px){
+	.box{
+		width:50%;
+	}
+}
+*/
+
+/*
+@media screen and (max-height: 580px){
+	.box{
+		width:50%;
+	}
+}
+*/
+/*
+
+@media screen and (min-width: 320px){
+	.box{
+		width: 100%;
+	}
+}
+
+
+@media screen and (min-width: 580px){
+	.box{
+		width:50%;
+	}
+}
+
+*/
+
+/*
+@media screen and (max-width: 580px){
+	.box{
+		width:50%;
+	}
+}
+
+
+@media screen and (max-width: 320px){
+	.box{
+		width: 100%;
+	}
+}
+*/
