@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: normal 15pt Arial;
+            background-color: rgb(102, 102, 245);
+        }
+        header h1{
+            color: white;
+            text-align: center;
+            margin: 25px;
+        }
+        section{
+            padding: 15px;
+            color: black;
+            width: 500px;
+            border-radius: 10px;
+            background-color: white;
+            margin: auto;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.349);            
+        }
+        select{
+            margin-top: 2px;
+            margin-left: 0;
+            width: auto;
+            min-width: 180px;
+            height: 208px;
+        }
+        select::-webkit-scrollbar {
+            width: 0px;  /* Remove scrollbar space */
+            background: transparent;  /* Optional: just make scrollbar invisible */
+        }
+        select option{
+            margin-top: 2%;
+            padding: 1px 30px;
+        }
+        footer{
+            color: white;
+            text-align: center;
+            padding-top: 6%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analisador de Números</h1>
+    </header>
+
+    <section>
+        <div>Numero entre 1 e 100: 
+            <input type="number" name="txtn" id="txtn"> 
+            <input type="button" value="Adicionar" onclick="adc()">
+            <input type="button" value="Retirar" onclick="ret()">
+        </div>
+        <div>
+            <br>
+            <p style="font-size: 12pt;">Números escolhidos:</p>
+            <select name="lista" id="lista" size="100"></select>
+            <input type="button" value="Limpar Lista" onclick="limpar()">
+        </div>
+        <input type="button" value="Analisar" onclick="finalizar()">
+        <div id="res">Aguardando dados...</div>
+    </section>
+
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+
+
+
+
+<script>
+///////////////////////////////////////////////////////////////////////////////////
+    let num = document.querySelector('input#txtn')
+    let lista = document.querySelector('select#lista')
+    let res = document.querySelector('div#res')
+    let array = []
+
+
+    function isNumero(n) {
+        if (Number(n) >= 1 && Number(n) <= 100){
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function inLista(n, l) {
+        if (l.indexOf(Number(n)) != -1){
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function adc() {
+        if (isNumero(num.value) && !inLista(num.value, array)) { // o sinal de ! significa NÃO
+            array.push(Number(num.value)) //Adiciona um ELEMENTO no ARRAY.
+            let item = document.createElement('option') //cria uma variavel para manipular as OPTION do SELECT
+            item.text = `Valor ${num.value} adicionado.` //Manipula o VALUE da OPTION criada
+            lista.appendChild(item) //acrescenta um novo valor da variável da OPTION na LISTA.
+            res.innerHTML = ''
+        } else {
+            window.alert('Valor inválido ou ja encontrado na lista')
+        }
+        num.value = '' //limpa a digitação
+        num.focus() //mantém o foco da digitação no local
+    }
+    function ret() {
+        if (isNumero(num.value) && inLista(num.value, array)) { // o sinal de ! significa NÃO
+            array.splice(Number(num.value)) //Adiciona um ELEMENTO no ARRAY.
+            let item = document.createElement('option') //cria uma variavel para manipular as OPTION do SELECT
+            item.text = `Valor ${num.value} retirado.` //Manipula o VALUE da OPTION criada
+            lista.appendChild(item) //acrescenta um novo valor da variável da OPTION na LISTA.
+            res.innerHTML = ''
+        } else {
+            window.alert('Valor inválido ou ja encontrado na lista')
+        }
+        num.value = '' //limpa a digitação
+        num.focus() //mantém o foco da digitação no local
+    }
+
+    function finalizar() {
+        if (array.length == 0){
+            window.alert('Adicione valores antes de analisar')
+        } else {
+            let tot = array.length
+            let maior = array[0]
+            let menor = array[0]
+            let soma = 0
+            let media = 0
+            for(let pos in array) {
+                soma += array[pos]
+                if (array[pos] > maior)
+                    maior = array[pos]
+                if (array[pos] < menor)
+                menor = array[pos]
+            }
+            media = soma / tot
+            res.innerHTML = ''
+            res.innerHTML += `<br><p> Ao todo, temos ${tot} números cadastrados. </p>`
+            res.innerHTML += `<p>O maior valor informado foi ${maior}.</p>`
+            res.innerHTML += `<p>O maior valor informado foi ${menor}.</p>`
+            res.innerHTML += `<p>A soma dos números é ${soma}.</p>`
+            res.innerHTML += `<p>A média dos números é ${media}.</p>`
+            //res.innerHTML += `<p></p>`
+        }
+    }
+
+    function limpar() {
+        lista.innerHTML = ''
+        res.innerHTML = ''
+        array = []
+    }
+///////////////////////////////////////////////////////////////////////////////////////////
+</script>
+
+
+</body>
+</html>

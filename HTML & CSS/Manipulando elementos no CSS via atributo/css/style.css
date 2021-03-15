@@ -1,0 +1,84 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+*
+*
+Estilo para o conteúdo do nosso site
+*
+*
+*/
+
+html,body{
+	height: 100%; 
+}
+
+
+.text[type=text]{
+	background-color: green;
+}
+
+input[type=submit]{
+	background-color: blue;
+}
+
+/*
+
+TEM QUE SER IGUAL!
+
+a[href="http://www.google.com"]{
+	background-color: yellow;
+}
+[href="http://www.google.com"]{
+	background-color: red;
+}
+*/
+
+/*
+
+PROCURE ENTRE OS ESPAÇOS DO ATRIBUTO.
+
+a[attr~="google"]{
+	background-color: blue;
+}
+
+*/
+
+/*
+
+ACHE A PALAVRA GOOGLE EM QUALQUER LUGAR.
+
+a[attr*="google"]{
+	background-color: blue;
+}
+
+*/
+
+/*
+QUANDO COMEÇAMOS COM A PALAVRA GOOGLE SEGUIDO POR UM ACENTO.
+
+a[attr|="google"]{
+	background-color: yellow;
+}
+*/
+
+/*
+QUANDO COMEÇAMOS COM A PALAVRA.
+
+a[attr^="goo"]{
+	background-color: red;
+}
+
+*/
+
+
+/*
+QUANDO TERMINAMOS COM A PALAVRA.
+
+a[attr$="google"]{
+	background-color: yellow;
+}
+
+*/

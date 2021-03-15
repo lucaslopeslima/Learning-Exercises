@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pratica2</title>
+</head>
+<body>
+    <h1>Sistema de nacionalidade</h1>
+    Digite aqui o seu país de origem:<input type="text" name="txtpais" id="txtpais">
+    <input type="button" value="Enviar" onclick="nacionalidade()">
+    <div id="resposta">A sua nacionalidade é...</div>
+
+<script>
+    function nacionalidade(){
+        let pais = document.getElementById('txtpais')
+        let res = document.getElementById('resposta')
+        let naci = (txtpais.value)
+        
+        
+        
+        if (naci == 'brasil' || naci == 'Brasil'){
+            res.innerHTML = `Você veio do ${naci}, portanto é Brasileiro.`
+        } else {
+            res.innerHTML = `Você <strong>não</strong> veio do BRASIL, portanto você é estrangeiro.`
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿*{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+*
+*
+Estilo para o conteúdo do nosso site
+*
+*
+*/
+
+html,body{
+	height: 100%; 
+}
+
+.box,.box2{
+	width: 300px;
+	margin: 0 auto;
+	display: none; /* Por padrão o display é sempre block */
+	background: gray;
+	/*
+	overflow-x: hidden;  -> Podemos utilizar também scroll, auto ou visible
+	overflow-y: hidden;  -> Podemos utilizar também scroll, auto ou visible
+	overflow: hidden; -> Quando queremos atacar o X(horizontal) e o Y(Vertical).
+	*/
+}
+
+.box p,.box2 p{
+	width: 100%;
+}
+
+.box2{
+	background-color: red;
+	/*margin-top:20px;*/
+	display: block;
+}

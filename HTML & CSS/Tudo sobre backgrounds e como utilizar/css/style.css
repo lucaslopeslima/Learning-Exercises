@@ -1,0 +1,31 @@
+*{
+ margin:0;
+ padding:0;
+}
+
+
+html,body{
+  height:100%;
+}
+
+
+.bg{
+	width: 50%;
+	height: 90%;
+	margin: 0 auto;
+
+	/*Backgrounds*/
+
+	background-color: red;
+	background-image: url('../imagens/danki_bg.jpg');
+
+	/***/
+	/* As propriedades abaixo sempre começam do eixo X(horizontal) seguido pelo eixo Y(vertical)*/
+	/* Caso apenas um valor seja utilizado será usado para ambos*/
+	/**/
+
+	background-position: right bottom; /*left,right,center / center,top,bottom */;
+	background-size: contain /* cover,auto,px ou % */;
+	background-repeat:no-repeat /*no-repeat,repeat-x,repeat-y*/;
+
+}

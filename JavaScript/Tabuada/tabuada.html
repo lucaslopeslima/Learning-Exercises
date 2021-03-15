@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: normal 15pt Arial;
+            background-color: rgb(102, 102, 245);
+        }
+        header h1{
+            color: white;
+            text-align: center;
+            margin: 25px;
+        }
+        section{
+            padding: 15px;
+            color: black;
+            width: 500px;
+            border-radius: 10px;
+            background-color: white;
+            margin: auto;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.349);            
+        }
+        select{
+            margin-top: 20px;
+            margin-left: 20%;
+            width: auto;
+            min-width: 120px;
+            height: 208px;
+        }
+        select::-webkit-scrollbar {
+            width: 0px;  /* Remove scrollbar space */
+            background: transparent;  /* Optional: just make scrollbar invisible */
+        }
+        select option{
+            margin-top: 2%;
+            padding: 1px 30px;
+        }
+        footer{
+            color: white;
+            text-align: center;
+            padding-top: 6%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+
+    <section>
+        <div>
+            <p>Número: <input type="number" name="num" id="txtn" value="1">
+            <input type="button" value="Gerar Tabuada" onclick="tabuada()"></p>
+        </div>
+        <div>
+            <select name="Tabuada" id="seltab" size="10"></select>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+
+
+
+
+<script>
+    function tabuada(){
+        let txtnum = document.getElementById('txtn')
+        let txttab = document.getElementById('seltab')
+            if (txtnum.value.length == 0) {
+                window.alert('Digite um Número!')
+            } else {
+                let numero = Number(txtnum.value)
+                let mult = 1
+                txttab.innerHTML = ''
+                while(mult <= 10){
+                    let item = document.createElement('option')
+                    item.text = `${numero} x ${mult} = ${numero*mult}`
+                    item.value = `tab${mult}`
+                    txttab.appendChild(item)
+                    mult++
+                }
+            }
+    }
+
+
+</script>
+
+
+</body>
+</html>

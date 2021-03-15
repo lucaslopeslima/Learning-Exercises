@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(173, 103, 238);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h2>olá mundo!</h2>
+    <p>Iniciando os estudo com o <Strong>DOM</Strong> em <strong>JavaScript</strong></p>
+    <div id="loading">clique em mim</div>
+
+    <script>
+       /* let loading = window.document.getElementById('loading')
+        loading.style.background = 'green'
+        loading.innerText = 'Loading...'*/
+
+
+        let loading = window.document.querySelector('div#loading')
+        loading.style.background = 'blue'
+        loading.innerText = 'Carregando...'
+    </script>
+    
+</body>
+</html>
