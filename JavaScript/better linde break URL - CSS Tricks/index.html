@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line Break for long URL - CSS-Tricks</title>
+    <style>
+        :root {
+        --border: 1px solid gray;
+        }
+
+        html {
+        font-size: 1.25em;
+        line-height: 1.2;
+        }
+
+        h2,
+        figcaption:before {
+        font-family: sans-serif;
+        }
+
+        section {
+        counter-reset: figure;
+        }
+
+        figure {
+        border-block-start: var(--border);
+        border-block-end: var(--border);
+        margin: 1em 0;
+        padding: 1em 0;
+        }
+
+        figcaption:before {
+        content: "Figure " counter(figure) ". ";
+        counter-increment: figure;
+        font-weight: bold;
+        font-variant: all-small-caps;
+        }
+
+        pre {
+        background-color: black;
+        border-radius: 0.5em;
+        color: white;
+        overflow-x: auto;
+        padding: 1em;
+        }
+
+        .hanging {
+        text-indent: -5ch;
+        margin-left: 5ch;
+        }
+
+        .hanging a {
+        color: inherit;
+        text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>URLs and Line Breaks</h2>
+        <p><cite>The Chicago Manual of Style</cite> recommends breaking long URLs (see <a href="#fig1">fig. 1</a>):</p>
+        <ul>
+          <li><em>After</em> a colon or a double slash (//)</li>
+          <li><em>Before</em> a single slash (/), a tilde (~), a period, a comma, a hyphen, and underline (_), a question mark, a number sign, or a percent symbol</li>
+          <li><em>Before or after</em> an equals sign or an ampersand (&)</li>
+        </ul>
+        <figure id="fig1">
+          <figcaption>Try resizing your browser window to see how these URLs wrap.</figcaption>
+          <p class="url">http://press-pubs.uchicago.edu/founders/</p>
+          <p class="url">http://www.jstor.org/sable/2921689</p>
+          <p class="url">http://www.themillions.com/2015/04/to-fall-in-love-with-a-reader-do-this.html</p>
+          <p class="url">http://content.time.com/time/magazine/article/0,9171,920400,00.html</p>
+          <p class="url">http://www.sceintificstyleandformat.org/</p>
+          <p class="url">http://www.amazon.com/s/ref=sr_nr_i_o?rh=k%3Ashark+vacuum%2Ci%3Agarden&keywords=shark+vacuum&ie=UTF8&qid=1327784979</p>
+        </figure>
+        <p>These rules are especially important when displaying urls in a bibliography or reference list.</p>
+      </section>
+      <section class="example">
+        <h2>References</h2>
+        <p class="hanging"><cite>Chicago Manual of Style</cite>. 2017. 17th ed. Chicago: University of Chicago Press. <a href="https://www.chicagomanualofstyle.org/book/ed17/part3/ch14/psec018.html">https://www.chicagomanualofstyle.org/book/ed17/part3/ch14/psec018.html</a>.</p>
+      </section>
+
+
+      <script>
+        function formatUrl(url) {
+            let doubleSlash = url.split('//') // Divide uma URL em um ARRAY, para diferenciar as barras duplas (//) das barras simples (/).
+            let formatted = doubleSlash.map(str => //Formata a STRING am ambos os lados da barra dupla (//), separadamente.
+                str.replace(/(?<after>:)/giu, '$1<wbr>') // Coloca uma possibilidade de quebra após dois pontos (:)
+                    .replace(/(?<before>[/~.,\-_?#%])/giu, '<wbr>$1') // Coloca uma possibilidade de quebra antes de uma barra simples (/); um til (~); um ponto (.); uma vírgula (,); um hífen (-); uma underline (_); uma interrogação (?); um jogo da velha (#); e um simbolo de porcentagem (%) 
+                    .replace(/(?<beforeAndAfter>[=&])/giu, '<wbr>$1<wbr>') // Before and after an equals sign or ampersand
+                ).join('//<wbr>') // Reconnect the strings with word break opportunities after double slashes
+
+return formatted
+      </script>
+</body>
+</html>
