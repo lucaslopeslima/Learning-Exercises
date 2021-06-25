@@ -1,0 +1,23 @@
+body {
+  background-color: rgba(0, 0, 0, 0.616);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.swiper-container {
+  width: 600px;
+  height: 400px;
+}
+
+.swiper-container .swiper-slide {
+  background-color: #ccc;
+  background-size: cover;
+}
+/*# sourceMappingURL=main.css.map */
